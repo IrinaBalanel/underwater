@@ -1,0 +1,831 @@
+/*TABLE OF CONTENTS*/
+/***********************************************/
+    /*GENERAL*/
+    /*HEADER*/
+    /*DESCRIPTION*/
+    /*LAYOUT*/
+    /*MASK & FLOATING ANIAMATIONS*/
+    /*ZOOM IN & DIVING MASK ANIMATIONS*/
+    /*WATER UP & DOWN ANIMATIONS*/
+    /*BUTTONS ANIMATIONS*/
+    /*ZOOM OUT & RESURFACING MASK ANIMATIONS*/
+    /*BUBBLES ANIMATIONS*/
+    /*FISH ANIMATIONS*/
+/***********************************************/
+
+/*GENERAL*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+body{
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    overflow: hidden;
+}
+
+.skip-to-main-content {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/*HEADER*/
+#header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 100px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    background-color: #fff9f5;
+}
+
+#header-logo {
+    width: 28vw;
+    max-width: 180px;
+    height: auto;
+    min-width: 120px;
+}
+
+#nav-bar {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 3.12em;
+    font-weight: 600;
+    align-items: center;
+}
+#header-navigation {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 3.12em;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-transform: uppercase;
+    align-items: center;
+}
+
+#contact-button {
+    background-color: #EEB192;;
+    padding: 0.87em 1.81em;
+    border-radius: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/*DESCRIPTION*/
+h1{
+    position: absolute;
+    margin-top: 30px;
+    font-family: "Montserrat";
+    font-weight: 800;
+    font-size: 1.2em;
+}
+
+p{
+    position: absolute;
+    margin-top: 60px;
+    font-size: 1em;
+}
+
+/*LAYOUT*/
+#sky{
+    background-color: #D8F6FF;
+    width: auto;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+
+}
+
+#under-water{
+    background-color: #008FCC;
+    width: auto;
+    height: 600px;
+    margin: 0;
+}
+
+#dive, #up {
+    background-color: #FFA67C;
+    text-align: center;
+    border-radius: 5px;
+    width: 200px;
+    height: 60px;
+    text-transform: uppercase;
+    margin-top: 190px;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+
+/*MASK & FLOATING ANIAMATION*/
+#mask-container{
+    margin-top: 80px;
+    margin-left: 130px;
+}
+
+#mask-container img{
+    width: 75%;
+    transition: transform 3s ease;
+}
+
+.floating{
+    animation: floating ease-out 6s alternate infinite;
+}
+
+@keyframes floating {
+
+    0%{
+        transform: translateY(30px);
+    }
+
+    25%{
+        transform: translateY(0px);
+    }
+
+    50%{
+        transform: translateY(50px);
+    }
+
+    75%{
+        transform: translateY(0px);
+    }
+
+    100%{
+        transform: translateY(30px);
+    }
+    
+}
+
+/*ZOOM IN & DIVING MASK ANIMATIONS*/
+.zoom-animation{
+    animation: zooming 6s forwards,
+    diving 2s forwards;
+}
+
+@keyframes zooming {
+
+    0%{
+        transform: scale(0) translate(0);
+    }
+
+    100%{
+        transform: scale(9) translate(20px);
+    }
+    
+}
+
+@keyframes diving {
+
+    0%{
+        transform: translateY(0);
+    }
+
+    15%{
+        transform: translateY(300px);
+    }
+    
+}
+
+/*WATER UP & DOWN ANIMATIONS*/
+.water-moving { /*this animation moves the additional water layer up*/
+    height:600px;
+    width:100%;
+    position: absolute;
+    background:#008FCC;
+    animation: water-animation ease 1s forwards; 
+    overflow: visible;
+}
+  
+@keyframes water-animation {
+    0% {
+        left:0;
+        top:50%;
+    }
+    
+    100% {
+        left:0;
+        top:0;
+    }
+}
+
+.water-moving-down { /*this animation moves the additional water layer down*/
+    height:600px;
+    width:100%;
+    position: absolute;
+    background:#008FCC;
+    animation: water-animation-down ease 2.5s forwards; 
+}
+  
+@keyframes water-animation-down {
+    0% {
+        left:0;
+        top:0;
+    }
+    
+    100% {
+        left:0;
+        top:50%;
+    }
+}
+
+/*BUTTONS ANIMATIONS*/
+#up{
+    transition: 4s ease; 
+}
+
+.button-overlay{ /*this animation zooms in the GO UP button*/
+    transform: scale(1.2);
+}
+
+.button-reveal{
+    animation: btnZoomOut 4s; /*this animation zooms out the DIVE button*/
+}
+
+@keyframes btnZoomOut {
+    0% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/*ZOOM OUT & RESURFACING MASK ANIMATION*/
+.zoom-out-animation{
+    animation: zooming-out 6s reverse forwards, surface 2s reverse forwards;
+}
+@keyframes zooming-out {
+
+    0%{
+        transform: scale(0) translate(0);
+    }
+
+    100%{
+        transform: scale(9) translate(20px);
+    }
+    
+}
+
+@keyframes surface {
+
+    0%{
+        transform: translateY(0);
+    }
+
+    15%{
+        transform: translateY(500px);
+    }
+    
+}
+
+
+/*BUBBLES ANIMATION*/
+.all-bubbles div{
+    height: 60px;
+    width: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50px;
+    position: absolute;
+    left: 10%;
+    animation: bubbles 4s linear infinite;
+}
+
+.dot{
+    height: 10px;
+    width: 10px;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    top: 20%;
+    right: 20%;
+
+}
+
+.all-bubbles div:nth-child(1) {
+    top: 20%;
+    left: 20%;
+    animation: bubbles 1s linear infinite;
+}
+
+.all-bubbles div:nth-child(2) {
+    top: 60%;
+    left: 80%;
+    animation: bubbles 2s linear infinite;
+}
+
+.all-bubbles div:nth-child(3) {
+    top: 40%;
+    left: 40%;
+    animation: bubbles 1s linear infinite;
+}
+
+.all-bubbles div:nth-child(4) {
+    top: 66%;
+    left: 30%;
+    animation: bubbles 1s linear infinite;
+}
+
+.all-bubbles div:nth-child(5) {
+    top: 90%;
+    left: 10%;
+    animation: bubbles 2s linear infinite;
+}
+
+.all-bubbles div:nth-child(6) {
+    top: 30%;
+    left: 60%;
+    animation: bubbles 2s linear infinite;
+}
+
+.all-bubbles div:nth-child(7) {
+    top: 70%;
+    left: 20%;
+    animation: bubbles 1s linear infinite;
+}
+
+.all-bubbles div:nth-child(8) {
+    top: 75%;
+    left: 60%;
+    animation: bubbles 2s linear infinite;
+}
+
+.all-bubbles div:nth-child(9) {
+    top: 30%;
+    left: 90%;
+    animation: bubbles 2s linear infinite;
+}
+
+.all-bubbles div:nth-child(10) {
+    top: 50%;
+    left: 50%;
+    animation: bubbles 1s linear infinite;
+}
+
+.all-bubbles div:nth-child(11) {
+    top: 90%;
+    left: 90%;
+    animation: bubbles 2s linear infinite;
+}
+
+.all-bubbles div:nth-child(12) {
+    top: 95%;
+    left: 70%;
+    animation: bubbles 1s linear infinite;
+}
+
+.all-bubbles div:nth-child(13) {
+    top: 95%;
+    left: 10%;
+    animation: bubbles 2s linear infinite;
+}
+
+@keyframes bubbles {
+    0% {
+        transform: scale(0) translateY(0) rotate(65deg);
+    }
+
+    100% {
+        transform: scale(1.3) translateY(-400px) rotate(65deg);
+    }
+}
+
+/*FISH ANIMATIONS*/
+/*Jelly fish*/
+#jelly-fish-one{
+    width: 7%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: -1%;
+    animation: jelly-fish-one-moving 15s ease infinite;
+}
+
+#jelly-fish-two{
+    width: 5%;
+    top: 80%;
+    left: 80%;
+    height: auto;
+    position: absolute;
+    animation: jelly-fish-two-moving 15s ease infinite;
+}
+
+
+@keyframes jelly-fish-one-moving {
+    0% {
+        transform:translateY(0px) translateX(-100px);
+    }
+    
+    10% {
+        transform:translateY(-100px) translateX(100px);
+    }
+    
+    20% {
+        transform:translateY(-50px) translateX(200px);
+    }
+
+    30% {
+        transform:translateY(-200px) translateX(200px);
+    }
+
+    40% {
+      transform:translateY(-150px) translateX(300px);
+    }
+
+    50% {
+        transform:translateY(-300px) translateX(300px);
+    }
+
+    60% {
+        transform:translateY(-250px) translateX(400px);
+    }
+
+    70% {
+        transform:translateY(-400px) translateX(400px);
+    }
+
+    80% {
+      transform:translateY(-350px) translateX(500px);
+    }
+
+    90% {
+        transform:translateY(-500px) translateX(600px);
+    }
+
+    95% {
+        transform:translateY(-450px) translateX(700px);
+    }
+
+    100% {
+        transform:translateY(-600px) translateX(800px);
+    }
+}
+
+@keyframes jelly-fish-two-moving {
+    0% {
+        transform:translateY(100px) translateX(0);
+    }
+
+    10% {
+        transform:translateY(-300px) translateX(-100px);
+    }
+
+    20% {
+        transform:translateY(-250px) translateX(-200px);
+    }
+
+    30% {
+        transform:translateY(-400px) translateX(-300px);
+    }
+
+    40% {
+      transform:translateY(-350px) translateX(-400px);
+    }
+
+    50% {
+        transform:translateY(-500px) translateX(-500px);
+    }
+
+    60% {
+        transform:translateY(-450px) translateX(-600px);
+    }
+    
+    70% {
+        transform:translateY(-600px) translateX(-700px);
+    }
+
+    80% {
+      transform:translateY(-550px) translateX(-800px);
+    }
+
+    90% {
+        transform:translateY(-700px) translateX(-900px);
+    }
+
+    95% {
+        transform:translateY(-650px) translateX(-900px);
+    }
+    
+    100% {
+      transform:translateY(-800px) translateX(-1000px);
+    }
+}
+
+/*Shark*/
+#shark{
+    width: 15%;
+    height: auto;
+    position: absolute;
+    top: 60%;
+    left: 90%;
+    animation: shark-moving 25s infinite linear;
+}
+
+@keyframes shark-moving {
+    0% {
+        transform:translateY(-50px) scale(1);
+        left: 100%;
+        top: 30%;
+    }
+
+    20% {
+        transform:translateY(-50px) scale(2) rotate(-10deg);
+    }
+
+    40% {
+        transform:translateY(0px) scale(3);
+    }
+
+    60% {
+        transform:translateY(-50px) scale(4);
+    }
+
+    80% {
+        transform:translateY(0px) scale(5);
+    }
+
+    100% {
+      transform:translateY(-50px) scale(6);
+      left: -100%;
+      top:100%;
+    }
+}
+
+/*Blue fish*/
+#blue-fish-one{
+    width: 8%;
+    height: auto;
+    position: absolute;
+    top: 20%;
+    left: 90%;
+    animation: blue-fish-one-moving 40s infinite linear;
+}
+
+@keyframes blue-fish-one-moving {
+    0% {
+        transform:translateY(-50px) scale(2) rotate(-25deg);
+        left: 110%;
+    }
+
+    20% {
+        transform:translateY(-50px) scale(1) rotate(0deg);
+    }
+
+    40% {
+        transform:translateY(0px) scale(1) rotate(0deg);
+    }
+
+    60% {
+        transform:translateY(-50px) scale(2) rotate(-25deg);
+    }
+
+    80% {
+        transform:translateY(0px) scale(2) rotate(-25deg);
+    }
+
+    100% {
+      transform:translateY(-50px) scale(2) rotate(-25deg);
+      left: -110%;
+    }
+}
+
+#blue-fish-two{
+    width: 8%;
+    top:100%;
+    left: 130%;
+    height: auto;
+    position: absolute;
+    animation: blue-fish-two-moving 40s infinite linear;
+}
+
+@keyframes blue-fish-two-moving {
+    0% {
+        transform:translateY(-50px) scale(0) rotate(0);
+        left: -100%;
+        top: 100%;
+    }
+
+    20% {
+        transform:translateY(-50px) scale(1) rotate(-15deg);
+    }
+
+    40% {
+        transform:translateY(0px) scale(1.5) rotate(0);
+    }
+
+    60% {
+        transform:translateY(-50px) scale(1) rotate(-15deg);
+    }
+
+    80% {
+        transform:translateY(0px) scale(0.7) rotate(0);
+    }
+
+    100% {
+      transform:translateY(-50px) scale(0.5) rotate(5deg);
+      left: 110%;
+      top: 10%;
+    }
+}
+
+/*Orange fish*/
+#orange-fish-one{
+    width: 5%;
+    height: auto;
+    position: absolute;
+    top: 70%;
+    left: 1%;
+
+}
+#orange-fish-two{
+    width: 10%;
+    height: auto;
+    position: absolute;
+    top: 70%;
+    left: 5%;
+}
+#orange-fish-three{
+    width: 7%;
+    height: auto;
+    position: absolute;
+    top: 75%;
+    left: 1%;
+}
+
+.orange-fish{
+    animation: orange-fish-moving 30s infinite linear;
+}
+
+@keyframes orange-fish-moving {
+    0% {
+        transform:translateY(-50px) scale(0.5);
+        left: -1%;
+        /* top: 100%; */
+    }
+
+    20% {
+        transform:translateY(0px) scale(1);
+        /* top: 80%; */
+    }
+
+    40% {
+        transform:translateY(-50px) scale(1.3) rotate(15deg);
+    }
+
+    60% {
+        transform:translateY(0px) scale(1);
+        /* top: 70%; */
+    }
+
+    80% {
+        transform:translateY(-50px) scale(0.5) rotate(25deg);
+    }
+
+    100% {
+      transform:translateY(0px) scale(0.3);
+      left: 120%;
+      /* top: 90%; */
+    }
+}
+
+#orange-fish-four{
+    width: 7%;
+    height: auto;
+    position: absolute;
+    top: 5%;
+    left: 110%;
+    animation: orange-fish-four-moving 30s infinite linear reverse;
+}
+
+@keyframes orange-fish-four-moving {
+    0% {
+        transform:translateY(-50px) scale(0.6) rotate(0deg);
+        left:-5%;
+        top: 101%;
+    }
+
+
+    50% {
+        transform:translateY(0px) scale(1.2) rotate(-35deg);
+        /* top: 70%; */
+    }
+
+
+    100% {
+      transform:translateY(0px) scale(2);
+      left: 130%;
+      top: 0%;
+    }
+}
+
+/*Sea star*/
+#sea-star{
+    width: 4%;
+    height: auto;
+    position: absolute;
+    animation: sea-star-rolling 50s infinite both;
+}
+
+@keyframes sea-star-rolling {
+    0% {
+        transform: rotate(0deg) translateX(0px);
+        top: 75%;
+        left: 100%;
+    }
+
+
+    100% {
+      transform: rotate(-360deg) translateX(-500px);
+      top: 75%;
+      left: 0%;
+    }
+}
+
+#menu-button {
+    display: flex;
+    align-items: center;
+    gap:7px;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+
+/*MEDIA QUERIES FOR LAYOUT*/
+@media (max-width: 1080px) {
+    /* MENU */
+    #header-container {
+        align-items: flex-start;
+        padding: 20px 40px;
+    }
+
+    #nav-bar {
+        flex-flow: column;
+        align-items: flex-end;
+        gap: 10px;
+    }
+
+    #burger-menu{
+        max-width: 1.5em;
+        height: auto;
+    }
+
+    .menu-toggle {
+        display: block;
+        text-transform: uppercase;
+        font-size: 1.25em;
+    }
+
+    #header-navigation{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1em;
+        transition:0.5s; 
+        overflow: hidden;
+        height:0;
+    }
+
+    #header-navigation.show-small {
+        padding:1em;
+        height:260px;
+        background-color:#fff4ee;
+        border: 2px solid #DE7B48;
+        border-radius: 5px;
+        position:absolute;
+        right:0;
+        width:20%;
+    }
+
+    .nav-item {
+        padding-left: 30px;
+    }
+
+    #contact-button{
+        background-color: unset;
+        padding: 0 0 0 20px;
+        text-align: left;
+    }
+
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1em;
+    }
+    
+    p {
+        font-size: 0.8em;
+    }
+}
