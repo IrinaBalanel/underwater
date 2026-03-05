@@ -1,0 +1,14 @@
+services:
+  underwater:
+    image: ${IMAGE:-underwater:latest}
+    build:
+      context: .
+    ports:
+      - "${APP_PORT:-8082}:80"
+    restart: unless-stopped
+    networks:
+      - underwater
+
+networks:
+  underwater:
+    name: underwater
